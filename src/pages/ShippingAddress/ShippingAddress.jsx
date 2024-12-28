@@ -22,7 +22,7 @@ export default function ShippingAddress() {
                 token : localStorage.getItem('Token')
             },
             params:{
-                url : "http://localhost:5173"
+                url : "https://e-commerce-three-rouge.vercel.app/#"
             }
         }).then((res) => {
             setLoading(false);
