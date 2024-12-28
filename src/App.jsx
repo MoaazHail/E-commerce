@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from './pages/Layout/Layout'
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Brands from './pages/Brands/Brands'
 import Cart from './pages/Cart/Cart'
@@ -20,7 +20,7 @@ import ShippingAddress from './pages/ShippingAddress/ShippingAddress'
 import CartContextProvider from './Context/CartContext'
 
 export default function App() {
-  let route = createBrowserRouter([
+  let route = createHashRouter([
     {path:'/', element:<Layout/>, children:[
       {index:true, element:<Home/>},
       {path:'/brands', element:<Brands/>},
