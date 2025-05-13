@@ -75,6 +75,10 @@ export default function ProductDetails() {
         axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
             .then((res) => {
                 console.log(res.data.data);
+                if(res.data.data.brand=== null){
+                    res.data.data.brand= '';
+                }
+
                 setProduct(res.data.data);
             })
             .catch((err) => {
@@ -115,7 +119,7 @@ export default function ProductDetails() {
                             <div>
                                 <h2>{product.title}</h2>
                                 <h3> {product.category.name} </h3>
-                                <h3> {product.brand.name} </h3>
+                                <h3> {product.brand} </h3>
                                 <p> {product.description} </p>
                             </div>
                             <div className=' flex gap-3'>

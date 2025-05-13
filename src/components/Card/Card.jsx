@@ -7,6 +7,10 @@ import { WishLoadingContext } from '../../Context/WishLoadingContext';
 
 export default function Card( {product}) {
   let {id,imageCover,title,brand,category,price,ratingsAverage}=product;
+  if(brand === null){
+    brand = '';
+  }
+
   let [action,setAction] = useState(false);
   let [loading, setLoading] = useState(false);
   let {loadingWish,setLoadingWish} = useContext(WishLoadingContext);
@@ -107,7 +111,7 @@ export default function Card( {product}) {
         <h3 className=' text-xl'>{title}</h3>
 
         <div className="flex justify-between items-center text-sm py-3 ">
-          <h4 className=' text-lg'>{brand.name}</h4>
+          <h4 className=' text-lg'>{brand}</h4>
           <p>
             {ratingsAverage} <i className="fa-solid fa-star text-yellow-600"></i>
           </p>

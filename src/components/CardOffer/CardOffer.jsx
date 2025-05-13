@@ -10,7 +10,9 @@ export default function CardOffer({ product }) {
   let { counter, setCounter } = useContext(CounterContext);
   let [loading , setLoading] = useState(false);
   let navigate = useNavigate();
-
+  if(product.brand == null){
+    product.brand = '';
+  }
   async function AddTOCard(id) {
     setLoading(true);
     axios.post('https://ecommerce.routemisr.com/api/v1/cart', { productId: id }, {
@@ -59,7 +61,7 @@ export default function CardOffer({ product }) {
           <div className="lower px-4">
             <h2 className=' text-center px-3 bg-slate-500 text-white text-2xl my-3'>{product.category.name}</h2>
             <h3 className=' text-sm'>{product.title}</h3>
-            <p className=' underline font-bold text-center text-xl my-2'>{product.brand.name}</p>
+            <p className=' underline font-bold text-center text-xl my-2'>{product.brand}</p>
 
             <div className="flex justify-start items-center text-sm mb-2">
               <div className=' flex justify-center items-center font-bold my-2'>

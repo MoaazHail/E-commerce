@@ -34,12 +34,10 @@ let counter = 0;
     axios.get("https://ecommerce.routemisr.com/api/v1/products")
       .then((res) => {
         setLoading(false);
-        // console.log(res.data.data);[{}]
         setProducts(res.data.data);
       })
       .catch((err) => {
         setLoading(false);
-        // console.log(err);
         setErrorMessage(err.message)
       })
   };
@@ -53,8 +51,6 @@ let counter = 0;
         return product
       }
   })
-  // console.log(fil);
-  // console.log(products);
   
 
   return (
