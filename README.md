@@ -94,7 +94,7 @@ Provide step-by-step instructions.
 
 ## Contact
 
-  * **My LinkedIn Profile** - (Click here)[https://www.linkedin.com/in/moaaz-al-shahed/]
+  * **My LinkedIn Profile** - [MIT](https://choosealicense.com/licenses/mit/)
   * **My Email Address** - (Click here) [hailmoaaz@gmail.com]
 
 -----
