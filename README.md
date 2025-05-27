@@ -41,8 +41,7 @@ Highlight the key functionalities and unique selling points of your project. Use
 
 ## Deployment 
 
-I use a Vercle to deployment my frontend project 
-this is url [] 
+I use Vercel to deployment this project - (url) [https://e-commerce-updated-beta.vercel.app/] 
 
 -----
 
