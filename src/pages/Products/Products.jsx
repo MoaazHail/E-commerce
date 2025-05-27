@@ -7,8 +7,6 @@ export default function Products() {
   let [loading, setLoading] = useState(false);
   let [products, setProducts] = useState([]);
   let [errorMessage, setErrorMessage] = useState(null);
-  let [searchProduct, setSearchProduct] = useState([]);
-  let [searchValue, setSearchValue] = useState(null);
 
 
   function getAllProduct() {
@@ -17,7 +15,7 @@ export default function Products() {
       .then((res) => {
         setLoading(false);
 
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setProducts(res.data.data);
       })
       .catch((err) => {

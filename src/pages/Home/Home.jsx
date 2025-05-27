@@ -35,6 +35,8 @@ let counter = 0;
       .then((res) => {
         setLoading(false);
         setProducts(res.data.data);
+        // console.log(res.data.data);
+
       })
       .catch((err) => {
         setLoading(false);
@@ -46,7 +48,9 @@ let counter = 0;
     getAllProduct();
   }, [])
 
-  let fil = products?.filter((product)=>{
+  let filter = structuredClone(products);
+
+  let fil = filter?.filter((product)=>{
     if(product.ratingsAverage <= 3){
         return product
       }
@@ -79,7 +83,10 @@ let counter = 0;
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4'>
             {
               fil.map((product)=>{
-                return <CardOffer product={product} />
+                return <CardOffer 
+                          key={product.id} 
+                          product={product}
+                        />
               })
             }
             </div>
@@ -93,7 +100,12 @@ let counter = 0;
               {products.map((product)=>{
                 counter++;
                 if(counter< 10){
-                  return(<Card product={product}/>)
+                  return(
+                  <Card 
+                    product={product}
+                    key={product.id}
+                  />
+                )
                 }
 
               })}

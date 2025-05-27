@@ -5,7 +5,7 @@ import Icons from '../../components/Icons/Icons';
 
 export default function Categories() {
   let [loading, setLoading] = useState(false);
-  let [brands, setBrands] = useState([]);
+  let [categories, setCategories] = useState([]);
   let [errorMessage, setErrorMessage] = useState(null);
   
 
@@ -15,8 +15,8 @@ export default function Categories() {
     axios.get("https://ecommerce.routemisr.com/api/v1/categories")
       .then((res) => {
         setLoading(false);
-        console.log(res);
-        setBrands(res.data.data);
+        // console.log(res);
+        setCategories(res.data.data);
       })
       .catch((err) => {
         setLoading(false);
@@ -35,8 +35,11 @@ export default function Categories() {
               <h1 className=' font-bold text-center text-2xl uppercase'> our <span className=' text-green-500'>Categories</span></h1>
     
               <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 min-h-screen'>
-                {brands?.map((brand) => {
-                  return <Icons item={brand} />
+                {categories?.map((category) => {
+                  return <Icons
+                            key={category._id}
+                            item={category}
+                          />
                 })}
               </div>
             </section>

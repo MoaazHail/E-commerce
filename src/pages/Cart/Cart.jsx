@@ -103,7 +103,13 @@ export default function Cart() {
 
               <div className="rounded-lg md:w-2/3">
                 {items?.products?.map((item) => {
-                  return (<CardCart item={item} cart={setItems} />)
+                  return (
+                            <CardCart 
+                              key={item.id}
+                              item={item}
+                              cart={setItems}
+                            
+                            />)
                 })}
                 {items && (<button onClick={deleteAllCart} className=" w-full bg-red-600 text-white text-xl capitalize rounded-lg p-2 hover:bg-red-700 mb-5">{loading ? (<i className="fa-solid fa-spinner fa-spin"></i>) : "clear All Cart"} </button>)}
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { UserContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom';
 import { CounterContext } from '../../Context/CounterContext';
@@ -61,7 +61,7 @@ export default function CardOffer({ product }) {
           <div className="lower px-4">
             <h2 className=' text-center px-3 bg-slate-500 text-white text-2xl my-3'>{product.category.name}</h2>
             <h3 className=' text-sm'>{product.title}</h3>
-            <p className=' underline font-bold text-center text-xl my-2'>{product.brand}</p>
+            <p className=' underline font-bold text-center text-xl my-2'>{product.brand.name}</p>
 
             <div className="flex justify-start items-center text-sm mb-2">
               <div className=' flex justify-center items-center font-bold my-2'>
