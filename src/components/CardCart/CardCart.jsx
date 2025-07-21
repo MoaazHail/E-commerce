@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { Bounce, toast } from 'react-toastify';
 
 export default function CardCart({item, cart}) {
-    console.log(item);
     
     let [loading, setLoading] = useState(false)
     let [count, setCount] = useState(item.count)

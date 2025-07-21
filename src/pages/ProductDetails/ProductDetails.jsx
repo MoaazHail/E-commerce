@@ -1,89 +1,84 @@
 import axios from 'axios';
-import React, {useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactImageGallery from 'react-image-gallery';
 import { useParams } from 'react-router-dom'
 import { Bounce, toast } from 'react-toastify';
-import { WishLoadingContext } from '../../Context/WishLoadingContext';
-import Loading from '../Loading/Loading';
-import Card from '../../components/Card/Card';
 import RelatedCard from '../../components/RelatedCard/RelatedCard';
 
 
 export default function ProductDetails() {
-    let { id} = useParams();
+    let { id } = useParams();
     let [product, setProduct] = useState(null);
     let [loadingBtn, setLoadingBtn] = useState(false);
-    let [errorMessage, setErrorMessage] = useState(false);
 
 
     function addTOCard(id) {
         setLoadingBtn(true);
         axios.post('https://ecommerce.routemisr.com/api/v1/cart', { productId: id }, {
-          headers: {
-            token: localStorage.getItem('Token')
-          }
+            headers: {
+                token: localStorage.getItem('Token')
+            }
         }).then((res) => {
-        //   console.log(res);
-        toast.success('Product Added To Card', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
+            //   console.log(res);
+            toast.success('Product Added To Card', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
             });
             setLoadingBtn(false);
-    
+
         })
-          .catch((err) => {
-            setLoadingBtn(false);
-          })
-    
-      }
+            .catch((err) => {
+                setLoadingBtn(false);
+            })
 
-      function addToWishList(id){
+    }
 
-        axios.post('https://ecommerce.routemisr.com/api/v1/wishlist',{ productId : id},{
-          headers:{
-            token : localStorage.getItem('Token')
-          }
-        }).then((res)=>{
-        //   console.log(res);
-        toast.info('Product Added to Wish List !', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
+    function addToWishList(id) {
+
+        axios.post('https://ecommerce.routemisr.com/api/v1/wishlist', { productId: id }, {
+            headers: {
+                token: localStorage.getItem('Token')
+            }
+        }).then((res) => {
+            //   console.log(res);
+            toast.info('Product Added to Wish List !', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
             });
 
-        }).catch((err)=>{
-          console.log(err);
+        }).catch((err) => {
+            console.log(err);
 
         })
-      }
-    
+    }
+
 
     function getProductById() {
         axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
             .then((res) => {
                 console.log(res.data.data);
-                if(res.data.data.brand=== null){
-                    res.data.data.brand= '';
+                if (res.data.data.brand === null) {
+                    res.data.data.brand = '';
                 }
 
                 setProduct(res.data.data);
             })
             .catch((err) => {
                 console.log(err);
-                setErrorMessage(err);
             })
 
     }
@@ -94,8 +89,7 @@ export default function ProductDetails() {
     }, [])
     return (
         <>
-        {/* {loadingWish && <Loading/>} */}
-            {product ?  (
+            {product ? (
                 <>
                     <div className=' flex flex-col justify-center items-center md:grid md:grid-cols-2 lg:grid lg:grid-cols-4 gap-10 pb-5 '>
 
@@ -116,16 +110,22 @@ export default function ProductDetails() {
                         </div>
 
                         <div className=' md:col-span-1 lg:col-span-3 '>
-                            <div>
-                                <h2>{product.title}</h2>
-                                <h3> {product.category.name} </h3>
-                                <h3> {product.brand} </h3>
-                                <p> {product.description} </p>
+                            <div className='flex flex-col my-4'>
+                                <div className=' inline items-center text-4xl font-semibold text-green-600 mb-10'>
+                                    
+                                    <h1 className='float-start'>{product.title}</h1>
+                                    <span className='lg:float-end  text-black'>{product.price} EGP</span>
+                                </div>
+
+                                {product.category?<h2 className=' text-2xl underline text-gray-300'> {product.category.name} </h2>:<></>}
+                                {product.brand?<h3 className='font-semibold text-lg'> {product.brand.name} </h3>:<></>}
+                                {product.description?<p> {product.description}{console.log(true)} </p>:<>{console.log()}</>}
+                                
                             </div>
                             <div className=' flex gap-3'>
-                                <button className='text-white text-sm bg-green-500 hover:bg-green-900 p-2 duration-500 ' onClick={()=>{addToWishList(id)}}><i className="fa-regular fa-heart cursor-pointer text-sm"></i></button>
+                                <button className='text-white text-sm bg-green-500 hover:bg-green-900 p-2 duration-500 ' onClick={() => { addToWishList(id) }}><i className="fa-regular fa-heart cursor-pointer text-sm"></i></button>
 
-                                <button className=' text-white text-xl bg-green-500 hover:bg-green-900 px-5  uppercase duration-500' onClick={()=>{addTOCard(id)}}> {loadingBtn ? <i className="fa-solid fa-spinner fa-spin"></i> :'add to card'} <i className="fa-solid fa-cart-shopping text-sm"></i> </button>
+                                <button className=' text-white text-xl bg-green-500 hover:bg-green-900 px-5  uppercase duration-500' onClick={() => { addTOCard(id) }}> {loadingBtn ? <i className="fa-solid fa-spinner fa-spin"></i> : 'add to card'} <i className="fa-solid fa-cart-shopping text-sm"></i> </button>
                             </div>
 
                         </div>
@@ -136,7 +136,7 @@ export default function ProductDetails() {
 
                     <div className=' pt-5'>
                         <h1 className=' text-center text-3xl font-bold'> Related <span className='text-green-500'>Products</span></h1>
-                        <RelatedCard/>
+                        <RelatedCard />
                     </div>
                 </>
             ) :
