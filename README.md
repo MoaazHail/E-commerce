@@ -7,7 +7,6 @@
 
 ## Table of Contents
 
-* [Features](#features)
 * [Built With](#built-with)
 * [Features](#features)
 * [Deployment](#deployment)
