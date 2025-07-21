@@ -41,7 +41,7 @@ Highlight the key functionalities and unique selling points of your project. Use
 
 ## Deployment 
 
-I use Vercel to deployment this project - [My Store] (https://e-commerce-updated-beta.vercel.app/) 
+I use Vercel to deployment this project - [My Store](https://e-commerce-updated-beta.vercel.app/) 
 
 -----
 
