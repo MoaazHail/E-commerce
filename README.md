@@ -65,23 +65,18 @@ Provide step-by-step instructions.
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/MoaazHail/E-commerce.git
-    cd your-project-name
+    cd E-commerce
     ```
 2.  **Install frontend dependencies (if applicable):**
     ```bash
-    cd client-folder # e.g., frontend, client, app
+    cd E-commerce # e.g., frontend, client, app
     npm install # or yarn install
     ```
 
-3.  **Set up environment variables:**
-    Create a `.env` file in the root of your project and add your environment variables.
-        ```
-        REACT_APP_API_URL=http://localhost:5000/api
-        ```
-4.  **Run the application:**
+3.  **Run the application:**
     ```bash
     # For frontend
-    cd client-folder
+    cd E-commerce
     npm run dev
     ```
 -----
