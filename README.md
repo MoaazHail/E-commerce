@@ -5,9 +5,21 @@
 
 -----
 
-## Built With
+## Table of Contents
 
-List the major frameworks, libraries, and technologies you used.
+* [Features](#features)
+* [Built With](#built-with)
+* [Features](#features)
+* [Deployment](#deployment)
+* [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+* [Usage](#usage)
+* [Contact](#contact)
+
+-----
+
+## Built With
 
   * **Technologies:**
       * React.js
@@ -28,8 +40,6 @@ List the major frameworks, libraries, and technologies you used.
 -----
 
 ## Features
-
-Highlight the key functionalities and unique selling points of your project. Use bullet points for readability.
 
   * User authentication and authorization
   * Responsive design for various devices
