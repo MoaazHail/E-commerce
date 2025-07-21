@@ -1,13 +1,11 @@
-import React, { useContext, useState } from 'react'
-import { UserContext } from '../../Context/UserContext'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { CounterContext } from '../../Context/CounterContext';
 import axios from 'axios';
 import { Bounce, toast } from 'react-toastify';
 
 export default function CardOffer({ product }) {
 
-  let { counter, setCounter } = useContext(CounterContext);
+  let {id,imageCover,title,brand,category,price}=product;
   let [loading , setLoading] = useState(false);
   let navigate = useNavigate();
   if(product.brand == null){
@@ -54,26 +52,26 @@ export default function CardOffer({ product }) {
 
           <p className=' text-white bg-red-700 rounded-full absolute p-2 z-10'> 50%</p>
           <div className="upper relative overflow-hidden">
-            <img src={product.imageCover} alt={product.title} className="w-full" />
+            <img src={imageCover} alt={title} className="w-full" />
           </div>
 
 
           <div className="lower px-4">
-            <h2 className=' text-center px-3 bg-slate-500 text-white text-2xl my-3'>{product.category.name}</h2>
-            <h3 className=' text-sm'>{product.title}</h3>
-            <p className=' underline font-bold text-center text-xl my-2'>{product.brand.name}</p>
-
+            {category?<h2 className=' text-center px-3 bg-slate-500 text-white text-2xl my-3'>{category.name}</h2>:<></>}
+            {title?<h3 className=' text-sm'>{title}</h3>:<></>}
+            {brand?<p className=' underline font-bold text-center text-xl my-2'>{brand.name}</p>:<></>}            
+            
             <div className="flex justify-start items-center text-sm mb-2">
               <div className=' flex justify-center items-center font-bold my-2'>
-                <p className=' relative text-red-600 px-3'>{product.price} <span className=' border-b-2 border-gray-900 w-14 absolute top-2.5 left-3 '></span> EGP</p>
-                <p className=' text-green-500'>{product.price / 2} EGP</p>
+                <p className=' relative text-red-600 px-3'>{price} <span className=' border-b-2 border-gray-900 w-14 absolute top-2.5 left-3 '></span> EGP</p>
+                <p className=' text-green-500'>{price / 2} EGP</p>
               </div>
             </div>
 
             <button className=' rounded-lg px-4 py-2 bg-green-600 hover:bg-green-900 cursor-pointer duration-500 delay-200 w-full capitalize font-bold text-white mb-3'
               onClick={() => {
                 if (localStorage.getItem('Token')) {
-                  AddTOCard(product.id)
+                  AddTOCard(id)
 
                 }
                 else {

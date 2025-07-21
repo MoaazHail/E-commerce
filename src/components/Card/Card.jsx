@@ -7,10 +7,6 @@ import { WishLoadingContext } from '../../Context/WishLoadingContext';
 
 export default function Card( {product}) {
   let {id,imageCover,title,brand,category,price,ratingsAverage}=product;
-  if(brand === null ){
-    brand = '';
-  }
-
   let [action,setAction] = useState(false);
   let [loading, setLoading] = useState(false);
   let {loadingWish,setLoadingWish} = useContext(WishLoadingContext);
@@ -107,19 +103,19 @@ export default function Card( {product}) {
       </div>
 
       <div className="lower pt-4">
-        <h2 className=' text-center px-2 bg-slate-500 text-white text-1xl rounded-lg'>{category.name}</h2>
-        <h3 className=' text-xl'>{title}</h3>
-
+        {category?<h2 className=' text-center px-2 bg-slate-500 text-white text-1xl rounded-lg'>{category.name}</h2>:<></>}
+        {title?<h3 className=' text-xl'>{title}</h3>:<></>}
+        
         <div className="flex justify-between items-center text-sm py-3 ">
-          <h4 className=' text-lg'>{brand.name}</h4>
+          {brand?<h4 className=' text-lg'>{brand.name}</h4>:<></>}
           <p>
             {ratingsAverage} <i className="fa-solid fa-star text-yellow-600"></i>
           </p>
-
         </div>
 
         <div className="flex justify-center gap-7 items-center ">
           <p>{price} EGP</p>
+          
           <i className={action ? "fa-solid fa-heart fa-beat cursor-pointer text-xl text-red-600" : "fa-regular fa-heart cursor-pointer text-xl" } onClick={()=>{addToWishList(id)}}></i>
           
         </div>
